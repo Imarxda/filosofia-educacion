@@ -629,10 +629,53 @@
     return true;
   }
 
+  // ---- Detección de amigas por nombre/apellido (sin importar mayúsculas) ----
+  var AMIGAS = [
+    {
+      tokens: ['alvarez','hayes','ana','paula','paula'],
+      apodo: 'pauliiii tkm 💗'
+    },
+    {
+      tokens: ['arriola','victoria'],
+      apodo: 'vickiiiii tkm 💗'
+    },
+    {
+      tokens: ['romero','dora','francisca'],
+      apodo: 'doritaaaa tkm 💗'
+    },
+    {
+      tokens: ['rios','ríos','jesica','antonella'],
+      apodo: 'jesicaaaa tkm 💗'
+    },
+    {
+      tokens: ['rodriguez','rodríguez','agustina','catalina'],
+      apodo: 'aguus tkm 💗'
+    },
+    {
+      tokens: ['gomez','gómez','lencina','milagros','alejandra'],
+      apodo: 'miliii tkm 💗'
+    }
+  ];
+
+  function detectarAmiga(nombre){
+    var partes = nombre.toLowerCase().split(/\s+/);
+    for (var i = 0; i < AMIGAS.length; i++){
+      var amiga = AMIGAS[i];
+      for (var j = 0; j < partes.length; j++){
+        if (amiga.tokens.indexOf(partes[j]) !== -1){
+          return amiga.apodo;
+        }
+      }
+    }
+    return null;
+  }
+
   goBtn.addEventListener('click', function(){
     if (!validateName()) return;
     studentName = nameInput.value.trim();
-    greetNameMenu.textContent = studentName;
+    var apodo = detectarAmiga(studentName);
+    var displayName = apodo ? apodo : studentName;
+    greetNameMenu.textContent = displayName;
     showScreen('menu');
   });
 
@@ -739,14 +782,16 @@
   }
 
   document.getElementById('choiceFormulario').addEventListener('click', function(){
-    greetNameSurvey.textContent = studentName;
+    var apodo = detectarAmiga(studentName);
+    greetNameSurvey.textContent = apodo ? apodo : studentName;
     hiddenNameSurvey.value = studentName;
     buildQuestions();
     showScreen('survey');
   });
 
   document.getElementById('choiceFrase').addEventListener('click', function(){
-    greetNameFill.textContent = studentName;
+    var apodo = detectarAmiga(studentName);
+    greetNameFill.textContent = apodo ? apodo : studentName;
     hiddenNameFill.value = studentName;
     buildFillSentences();
     showScreen('fill');

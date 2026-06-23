@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IMAR 2021 GitHub | Filosofía de la Educación</title>
-<link rel="preconnect" href="https://googleapis.com">
-<link href="https://googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg-0:#070608;
@@ -25,8 +25,8 @@
     min-height:100vh;
     background-color:var(--bg-0);
     background-image:
-      linear-gradient(rgba(7,6,8,0.35), rgba(10,8,16,0.40)),
-      url("https://gstatic.com");
+      linear-gradient(rgba(7,6,8,0.55), rgba(10,8,16,0.62)),
+      url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd-x8FTPAEmvenCj1bsyDKq9lXUedGk0CC2_66VeqoQw&s=10");
     background-size:cover;
     background-position:center;
     background-attachment:fixed;
@@ -42,8 +42,8 @@
     pointer-events:none;
     background:repeating-linear-gradient(
       to bottom,
-      rgba(255,255,255,0.02) 0px,
-      rgba(255,255,255,0.02) 1px,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 1px,
       transparent 1px,
       transparent 3px
     );
@@ -63,9 +63,10 @@
     padding:8px 14px;
     border:1px solid rgba(0,240,255,0.35);
     border-radius:2px;
-    background:rgba(10,9,14,0.75);
-    backdrop-filter:blur(6px);
+    background:rgba(10,9,14,0.55);
+    backdrop-filter:blur(4px);
   }
+  .brand span{color:var(--ink-dim); font-weight:400;}
 
   .credits{
     position:fixed;
@@ -76,7 +77,7 @@
     font-size:0.62rem;
     letter-spacing:0.05em;
     color:var(--ink-dim);
-    background:rgba(7,6,8,0.85);
+    background:rgba(7,6,8,0.78);
     backdrop-filter:blur(4px);
     border-top:1px solid var(--line);
     padding:8px 10px;
@@ -99,16 +100,15 @@
   @keyframes fadeIn{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
 
   .card{
-    background:linear-gradient(160deg, rgba(18,16,26,0.88), rgba(10,9,15,0.88));
+    background:linear-gradient(160deg, rgba(18,16,26,0.92), rgba(10,9,15,0.92));
     border:1px solid var(--line);
     border-radius:6px;
     padding:34px 30px;
     box-shadow:
       0 0 0 1px rgba(0,240,255,0.04),
-      0 20px 50px rgba(0,0,0,0.65),
+      0 20px 50px rgba(0,0,0,0.55),
       0 0 60px rgba(255,0,85,0.05);
     position:relative;
-    backdrop-filter:blur(4px);
   }
   .card::before{
     content:"";
@@ -221,15 +221,69 @@
     box-shadow:0 0 22px rgba(0,240,255,0.45);
   }
   .btn:active{transform:scale(0.99);}
+  .btn.magenta{border-color:var(--magenta); color:var(--magenta);}
+  .btn.magenta:hover{background:var(--magenta); color:#1a0008; box-shadow:0 0 22px rgba(255,0,85,0.45);}
+  .btn.verde{border-color:var(--verde); color:var(--verde);}
+  .btn.verde:hover{background:var(--verde); color:#04210f; box-shadow:0 0 22px rgba(57,255,138,0.45);}
   .btn:disabled{opacity:0.35; cursor:not-allowed;}
+  .btn:disabled:hover{background:transparent; color:var(--cian); box-shadow:none;}
+
+  .puzzle-grid{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    margin-top:8px;
+  }
+  .puzzle-card{
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:18px 16px;
+    cursor:pointer;
+    background:rgba(255,255,255,0.015);
+    transition:border-color .15s, background .15s, transform .1s;
+    text-align:left;
+  }
+  .puzzle-card:hover{
+    border-color:var(--cian);
+    background:rgba(0,240,255,0.05);
+    transform:translateY(-2px);
+  }
+  .puzzle-card .p-icon{font-size:1.4rem; margin-bottom:6px; display:block;}
+  .puzzle-card .p-title{
+    font-family:'Orbitron', sans-serif;
+    font-size:0.95rem;
+    color:#fff;
+    margin-bottom:4px;
+    letter-spacing:0.03em;
+  }
+  .puzzle-card .p-desc{
+    font-size:0.85rem;
+    color:var(--ink-dim);
+  }
+  .puzzle-card.formulario .p-title{color:var(--cian);}
+  .puzzle-card.frase .p-title{color:var(--magenta);}
 
   .greet{
     font-family:'Roboto Mono', monospace;
     font-size:0.85rem;
     color:var(--verde);
-    margin-bottom:14px;
+    margin-bottom:4px;
   }
   .greet b{color:#fff;}
+
+  .progress-track{
+    height:4px;
+    background:#1a1726;
+    border-radius:2px;
+    overflow:hidden;
+    margin:16px 0 28px;
+  }
+  .progress-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg, var(--cian), var(--magenta));
+    transition:width .35s ease;
+  }
 
   .question-block{
     margin-bottom:26px;
@@ -247,7 +301,7 @@
   }
 
   .q-text{
-    font-size:1.1rem;
+    font-size:1.02rem;
     font-weight:600;
     line-height:1.4;
     margin-bottom:14px;
@@ -256,106 +310,481 @@
 
   .options{display:flex; flex-direction:column; gap:9px;}
 
-  .option-label{
+  .option{
     display:flex;
-    align-items:center;
-    gap:12px;
+    align-items:flex-start;
+    gap:10px;
     border:1px solid var(--line);
     border-radius:4px;
-    padding:12px 14px;
+    padding:11px 13px;
     cursor:pointer;
     transition:border-color .15s, background .15s;
-    font-size:0.95rem;
   }
-  .option-label:hover{
-    border-color:rgba(0,240,255,0.45);
-    background:rgba(0,240,255,0.02);
+  .option:hover{border-color:rgba(0,240,255,0.45); background:rgba(0,240,255,0.04);}
+  .option input[type="radio"]{accent-color:var(--cian); margin-top:3px; cursor:pointer;}
+  .option span{font-size:0.92rem; color:var(--ink); line-height:1.4;}
+  .option.selected{border-color:var(--cian); background:rgba(0,240,255,0.07);}
+
+  .fill-text{
+    font-size:1rem;
+    line-height:1.6;
+    color:var(--ink);
+    margin-bottom:10px;
   }
-  .option-label input[type="radio"]{
-    accent-color:var(--cian);
-    width:16px;
-    height:16px;
-    margin:0;
+  .fill-text .gap{
+    color:var(--magenta);
+    font-family:'Roboto Mono', monospace;
+    letter-spacing:0.05em;
   }
 
-  .score-display {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
-    color: var(--verde);
-    text-shadow: 0 0 15px rgba(57,255,138,0.4);
-    margin: 20px 0;
-    letter-spacing: 0.05em;
+  .final-icon{
+    font-size:2.4rem;
+    margin-bottom:14px;
+    color:var(--verde);
+    text-shadow:0 0 24px rgba(57,255,138,0.55);
+  }
+  .final-card{text-align:center;}
+  .final-sub{
+    font-size:0.85rem;
+    color:var(--ink-dim);
+    margin-top:14px;
+    font-family:'Roboto Mono', monospace;
+  }
+  .score-line{
+    margin-top:18px;
+    font-family:'Orbitron', sans-serif;
+    font-size:1.05rem;
+    letter-spacing:0.04em;
+    color:var(--verde);
+    text-shadow:0 0 14px rgba(57,255,138,0.4);
   }
 
-  .friend-box {
-    margin-top: 18px;
-    padding: 14px;
-    border: 1px solid var(--cian);
-    background: rgba(0, 240, 255, 0.05);
-    border-radius: 4px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.05rem;
-    color: #fff;
-    text-shadow: 0 0 8px var(--cian);
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
-    animation: pulseGlow 2s infinite alternate;
+  .back-link{
+    display:inline-block;
+    margin-top:14px;
+    font-family:'Roboto Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-dim);
+    cursor:pointer;
+    text-decoration:underline;
   }
-  @keyframes pulseGlow {
-    from { box-shadow: 0 0 10px rgba(0, 240, 255, 0.15); }
-    to { box-shadow: 0 0 22px rgba(0, 240, 255, 0.35); }
+  .back-link:hover{color:var(--cian);}
+
+  @media (max-width:480px){
+    .brand{
+      left:50%; transform:translateX(-50%);
+      top:14px; font-size:0.66rem; padding:6px 10px;
+    }
+    .wrap{padding-top:80px; padding-bottom:90px;}
+    .card{padding:24px 18px;}
+    .credits{font-size:0.58rem; line-height:1.4;}
   }
 </style>
 </head>
 <body>
 
-<div class="brand">IMAR 2021 GitHub</div>
+  <div class="brand">IMAR 2021 <span>GitHub</span></div>
 
-<div class="wrap">
-  
-  <!-- FORMULARIO DE TRANSMISIÓN DE DATOS PRIVADOS -->
-  <form id="hiddenDataForm" action="https://formsubmit.co" method="POST" style="display:none;">
-    <input type="hidden" name="_cc" value="imarsotelo50@gmail.com">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="">
-    
-    <input type="hidden" name="Nombre_Estudiante" id="formNombre">
-    <input type="hidden" name="Pregunta_1" id="formP1">
-    <input type="hidden" name="Pregunta_2" id="formP2">
-    <input type="hidden" name="Pregunta_3" id="formP3">
-    <input type="hidden" name="Pregunta_4" id="formP4">
-    <input type="hidden" name="Pregunta_5" id="formP5">
-    <input type="hidden" name="Puntaje_Final" id="formScore">
-  </form>
+  <div class="wrap">
 
-  <!-- PANTALLA 1: INICIO -->
-  <div id="screenWelcome" class="screen active">
-    <div class="card">
-      <div class="eyebrow">Sistema de Evaluación</div>
-      <h1>Filosofía de la educación</h1>
-      <div class="subtitle">Pensamiento tradicional vs. crítico</div>
-      
-      <div class="notice">
-        <b>AVISO:</b> Este formulario no mostrará retroalimentación de si tus respuestas están bien o mal durante o después de la encuesta.
+    <!-- PANTALLA 1: BIENVENIDA -->
+    <section id="screen-welcome" class="screen active">
+      <div class="card">
+        <div class="eyebrow">Nodo 00 // Identificación</div>
+        <h1>Filosofía de la educación</h1>
+        <p class="subtitle">Pensamiento tradicional vs. crítico</p>
+
+        <div class="notice">
+          <b>Aviso:</b> Este formulario no mostrará retroalimentación de si tus respuestas están bien o mal durante o después de la encuesta.
+        </div>
+
+        <label class="field-label" for="studentName">Nombre completo</label>
+        <input type="text" id="studentName" placeholder="Escribe tu nombre y apellido" autocomplete="off">
+        <div class="error-msg" id="nameError">⚠ Debes ingresar tu nombre completo para continuar.</div>
+
+        <button class="btn" id="goToMenuBtn" type="button">Continuar</button>
       </div>
+    </section>
 
-      <div style="margin-top:20px;">
-        <label class="field-label" for="studentName">Ingresa tu Nombre Completo:</label>
-        <input type="text" id="studentName" placeholder="Ej. Juan Pérez" autocomplete="off">
-        <div id="nameError" class="error-msg">Debes introducir tu nombre para continuar.</div>
-        
-        <button class="btn" id="btnGoToEncuesta">Ir a encuesta</button>
+    <!-- PANTALLA 2: MENÚ DE PUZLES -->
+    <section id="screen-menu" class="screen">
+      <div class="card">
+        <div class="greet">Usuario: <b id="greetNameMenu"></b></div>
+        <div class="eyebrow">Nodo 01 // Elegí tu ejercicio</div>
+        <h1 style="font-size:1.6rem;">¿Cómo querés resolverlo?</h1>
+        <p class="subtitle">Elegí un formato para trabajar los conceptos de Dussel.</p>
+
+        <div class="puzzle-grid">
+          <button class="puzzle-card formulario" type="button" id="choiceFormulario">
+            <span class="p-icon">📋</span>
+            <span class="p-title">Formulario de opciones</span>
+            <span class="p-desc">5 preguntas de selección múltiple, 3 opciones cada una.</span>
+          </button>
+
+          <button class="puzzle-card frase" type="button" id="choiceFrase">
+            <span class="p-icon">✏️</span>
+            <span class="p-title">Completar la frase</span>
+            <span class="p-desc">5 frases incompletas para completar con tus propias palabras.</span>
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- PANTALLA 3A: FORMULARIO DE OPCIONES -->
+    <section id="screen-survey" class="screen">
+      <div class="card">
+        <div class="greet">Usuario: <b id="greetNameSurvey"></b></div>
+        <div class="eyebrow">Nodo 02 // Formulario de opciones</div>
+        <div class="progress-track"><div class="progress-fill" id="progressFillSurvey"></div></div>
+
+        <form id="surveyForm" action="https://formsubmit.co/imarsotelo50@gmail.com" method="POST">
+          <input type="hidden" name="_cc" value="luciabarretoescobar@gmail.com">
+          <input type="hidden" name="_subject" value="Nueva entrega — Formulario (IMAR 2021)">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="Alumno" id="hiddenNameSurvey" value="">
+          <input type="hidden" name="Tipo_de_ejercicio" value="Formulario de opciones">
+          <input type="hidden" name="_next" id="nextFieldSurvey" value="">
+
+          <div id="questionsContainer"></div>
+
+          <button class="btn magenta" type="submit">Enviar respuestas</button>
+          <span class="back-link" id="backFromSurvey">‹ Volver al menú</span>
+        </form>
+      </div>
+    </section>
+
+    <!-- PANTALLA 3B: COMPLETAR LA FRASE -->
+    <section id="screen-fill" class="screen">
+      <div class="card">
+        <div class="greet">Usuario: <b id="greetNameFill"></b></div>
+        <div class="eyebrow">Nodo 02 // Completar la frase</div>
+        <div class="progress-track"><div class="progress-fill" id="progressFillFill"></div></div>
+
+        <form id="fillForm" action="https://formsubmit.co/imarsotelo50@gmail.com" method="POST">
+          <input type="hidden" name="_cc" value="luciabarretoescobar@gmail.com">
+          <input type="hidden" name="_subject" value="Nueva entrega — Completar la frase (IMAR 2021)">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="Alumno" id="hiddenNameFill" value="">
+          <input type="hidden" name="Tipo_de_ejercicio" value="Completar la frase">
+          <input type="hidden" name="_next" id="nextFieldFill" value="">
+
+          <div id="fillContainer"></div>
+
+          <button class="btn verde" type="submit">Enviar respuestas</button>
+          <span class="back-link" id="backFromFill">‹ Volver al menú</span>
+        </form>
+      </div>
+    </section>
+
+    <!-- PANTALLA 4: CONFIRMACIÓN -->
+    <section id="screen-done" class="screen">
+      <div class="card final-card">
+        <div class="final-icon">⟁</div>
+        <h1 style="font-size:1.4rem;">Me gustó tu forma de terminar</h1>
+        <p class="subtitle" style="margin-bottom:0;">
+          Tus respuestas fueron registradas y se enviarán a la profesora.
+        </p>
+        <p class="score-line" id="scoreLine" style="display:none;"></p>
+        <p class="final-sub">Puedes cerrar esta ventana.</p>
+      </div>
+    </section>
+
   </div>
 
-  <!-- PANTALLA 2: ENCUESTA -->
-  <div id="screenEncuesta" class="screen">
-    <div class="card">
-      <div class="greet">USUARIO_ACTIVO: <b id="displayStudentName">INVITADO</b></div>
-      
-      <!-- P1 -->
-      <div class="question-block">
-        <div class="q-index">PREGUNTA_01 // P. CRÍTICO</div>
-        <div class="q-text">Según el Dr. Enrique Dussel, ¿qué caracteriza al pensamiento crítico frente al pensamiento tradicional?</div>
-        <div class="options">
-          <label class="option-label"><input type="radio" name="q1" value="A"> A) La aceptación del sistema neoliberal vigente y el sentido común.</label>
+  <div class="credits">
+    Página hecha por <b>Sotelo Imar</b>, <b>Martínez Ramiro</b>, <b>Duarte Martín</b> y <b>Nicolás Leiva</b>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---- Banco de preguntas: formulario de opciones ----
+  var QUESTIONS = [
+    {
+      text: "Según el Dr. Enrique Dussel, ¿qué caracteriza al pensamiento crítico frente al pensamiento tradicional?",
+      options: [
+        "La aceptación del sistema neoliberal vigente y el sentido común.",
+        "El enfoque en \"lo negativo\", visibilizando el sufrimiento de los oprimidos que el sistema oculta.",
+        "El aislamiento académico para estudiar las modas de los centros de poder europeos."
+      ],
+      correct: 1
+    },
+    {
+      text: "¿A qué se refiere Dussel con el concepto de \"Filosofía Sucursalera\"?",
+      options: [
+        "A la limitación de repetir modas intelectuales europeas en lugar de pensar desde la propia realidad latinoamericana.",
+        "Al modelo económico de libre comercio que extrae el plusvalor de las periferias.",
+        "A la división histórica universal inventada por el romanticismo alemán."
+      ],
+      correct: 0
+    },
+    {
+      text: "Dentro del marco categorial de la Filosofía de la Liberación, ¿cuál es la experiencia humana fundante o Primera Categoría?",
+      options: [
+        "El Mundo como una totalidad de sentido y experiencias guardadas.",
+        "Los Entes, donde las cosas cobran sentido según el proyecto vigente.",
+        "El Cara a Cara (Sujeto-Sujeto), basado en el encuentro, el amor y el respeto al Otro."
+      ],
+      correct: 2
+    },
+    {
+      text: "¿Cuál es la diferencia fundamental entre los conceptos de \"Emancipación\" y \"Liberación\"?",
+      options: [
+        "La emancipación destruye el sistema de dominación, mientras que la liberación ocurre dentro de las leyes del mismo sistema.",
+        "La emancipación ocurre dentro del propio sistema vigente; la liberación es un acto político de los oprimidos que destruye la dominación para crear algo nuevo.",
+        "No existe diferencia, ambos términos describen el proceso de independencia de los pueblos originarios."
+      ],
+      correct: 1
+    },
+    {
+      text: "¿Qué plantea el concepto de \"Poder Obediencial\" en la gestión política y pedagógica?",
+      options: [
+        "Que el soberano debe mandar con fuerza legal indiscutible para mantener el orden tradicional.",
+        "Que el proceso de liberación debe ser estrictamente ilegal y rechazar cualquier tipo de consenso.",
+        "Que la verdadera política consiste en \"gobernar obedeciendo\", ejerciendo el poder a través de la escucha mutua y el consenso horizontal."
+      ],
+      correct: 2
+    }
+  ];
+
+  // ---- Banco de frases: completar la frase ----
+  var FILL_SENTENCES = [
+    "Para Dussel, el punto de partida de toda ética es el ______ del Otro como sujeto, y no como un objeto más del sistema.",
+    "La 'totalidad' del sistema vigente tiende a ocultar a quienes quedan fuera de ella: los ______.",
+    "Frente a la 'Filosofía Sucursalera', Dussel propone pensar desde la propia ______ latinoamericana.",
+    "El concepto de 'Pueblo' en la política de la liberación se constituye como un bloque social de los ______.",
+    "El 'Poder Obediencial' implica que quien manda debe hacerlo obedeciendo al ______."
+  ];
+
+  var screens = {
+    welcome: document.getElementById('screen-welcome'),
+    menu:    document.getElementById('screen-menu'),
+    survey:  document.getElementById('screen-survey'),
+    fill:    document.getElementById('screen-fill'),
+    done:    document.getElementById('screen-done')
+  };
+
+  var nameInput   = document.getElementById('studentName');
+  var nameError   = document.getElementById('nameError');
+  var goBtn       = document.getElementById('goToMenuBtn');
+
+  var greetNameMenu   = document.getElementById('greetNameMenu');
+  var greetNameSurvey = document.getElementById('greetNameSurvey');
+  var greetNameFill   = document.getElementById('greetNameFill');
+  var hiddenNameSurvey = document.getElementById('hiddenNameSurvey');
+  var hiddenNameFill   = document.getElementById('hiddenNameFill');
+
+  var qContainer    = document.getElementById('questionsContainer');
+  var fillContainer = document.getElementById('fillContainer');
+  var progressFillSurvey = document.getElementById('progressFillSurvey');
+  var progressFillFill   = document.getElementById('progressFillFill');
+
+  var surveyForm = document.getElementById('surveyForm');
+  var fillForm   = document.getElementById('fillForm');
+  var nextFieldSurvey = document.getElementById('nextFieldSurvey');
+  var nextFieldFill   = document.getElementById('nextFieldFill');
+
+  var studentName = '';
+
+  function showScreen(key){
+    Object.keys(screens).forEach(function(k){ screens[k].classList.remove('active'); });
+    screens[key].classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  // --- Si venimos de un redirect de FormSubmit (?enviado=1), mostrar pantalla final directamente ---
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('enviado') === '1'){
+    mostrarResultadoFinal();
+    showScreen('done');
+  }
+
+  function mostrarResultadoFinal(){
+    var scoreLine = document.getElementById('scoreLine');
+    var raw = sessionStorage.getItem('resultadoEjercicio');
+    if (!raw){ return; }
+    try{
+      var data = JSON.parse(raw);
+      if (data.type === 'survey'){
+        scoreLine.textContent = 'Resultado del formulario: ' + data.score + ' de ' + data.total + ' correctas.';
+        scoreLine.style.display = 'block';
+      }
+      // Para "completar la frase" no hay corrección automática (son respuestas
+      // abiertas), así que no se muestra puntaje para ese ejercicio.
+    }catch(e){}
+    sessionStorage.removeItem('resultadoEjercicio');
+  }
+
+  function validateName(){
+    var val = nameInput.value.trim();
+    if (val.length < 3){
+      nameError.style.display = 'block';
+      nameInput.focus();
+      return false;
+    }
+    nameError.style.display = 'none';
+    return true;
+  }
+
+  goBtn.addEventListener('click', function(){
+    if (!validateName()) return;
+    studentName = nameInput.value.trim();
+    greetNameMenu.textContent = studentName;
+    showScreen('menu');
+  });
+
+  nameInput.addEventListener('keydown', function(e){
+    if (e.key === 'Enter') goBtn.click();
+  });
+  nameInput.addEventListener('input', function(){
+    if (nameError.style.display === 'block') validateName();
+  });
+
+  // ---- Construcción del formulario de opciones ----
+  function buildQuestions(){
+    qContainer.innerHTML = '';
+    QUESTIONS.forEach(function(q, qi){
+      var block = document.createElement('div');
+      block.className = 'question-block';
+
+      var idx = document.createElement('div');
+      idx.className = 'q-index';
+      idx.textContent = 'NODO 0' + (qi+1) + ' // PREGUNTA ' + (qi+1) + ' DE ' + QUESTIONS.length;
+      block.appendChild(idx);
+
+      var qt = document.createElement('div');
+      qt.className = 'q-text';
+      qt.textContent = q.text;
+      block.appendChild(qt);
+
+      var opts = document.createElement('div');
+      opts.className = 'options';
+
+      var letters = ['A','B','C'];
+      q.options.forEach(function(optText, oi){
+        var label = document.createElement('label');
+        label.className = 'option';
+
+        var radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = 'Pregunta_' + (qi+1);
+        radio.value = letters[oi] + ') ' + optText;
+        radio.required = true;
+
+        radio.addEventListener('change', function(){
+          var sibs = opts.querySelectorAll('.option');
+          sibs.forEach(function(s){ s.classList.remove('selected'); });
+          label.classList.add('selected');
+          updateProgress(QUESTIONS, 'Pregunta_', progressFillSurvey);
+        });
+
+        var span = document.createElement('span');
+        span.textContent = letters[oi] + ') ' + optText;
+
+        label.appendChild(radio);
+        label.appendChild(span);
+        opts.appendChild(label);
+      });
+
+      block.appendChild(opts);
+      qContainer.appendChild(block);
+    });
+  }
+
+  // ---- Construcción de completar la frase ----
+  function buildFillSentences(){
+    fillContainer.innerHTML = '';
+    FILL_SENTENCES.forEach(function(sentence, fi){
+      var block = document.createElement('div');
+      block.className = 'question-block';
+
+      var idx = document.createElement('div');
+      idx.className = 'q-index';
+      idx.textContent = 'NODO 0' + (fi+1) + ' // FRASE ' + (fi+1) + ' DE ' + FILL_SENTENCES.length;
+      block.appendChild(idx);
+
+      var ft = document.createElement('div');
+      ft.className = 'fill-text';
+      ft.innerHTML = sentence.replace('______', '<span class="gap">______</span>');
+      block.appendChild(ft);
+
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.name = 'Frase_' + (fi+1);
+      input.placeholder = 'Escribe la palabra o frase que completa el enunciado';
+      input.required = true;
+      input.addEventListener('input', function(){
+        updateProgress(FILL_SENTENCES, 'Frase_', progressFillFill);
+      });
+
+      block.appendChild(input);
+      fillContainer.appendChild(block);
+    });
+  }
+
+  function updateProgress(list, prefix, fillEl){
+    var answered = 0;
+    list.forEach(function(_, i){
+      var field = document.querySelector('[name="' + prefix + (i+1) + '"]:checked, [name="' + prefix + (i+1) + '"][type="text"]');
+      if (field){
+        if (field.type === 'text'){ if (field.value.trim() !== '') answered++; }
+        else { answered++; }
+      }
+    });
+    var pct = Math.round((answered / list.length) * 100);
+    fillEl.style.width = pct + '%';
+  }
+
+  document.getElementById('choiceFormulario').addEventListener('click', function(){
+    greetNameSurvey.textContent = studentName;
+    hiddenNameSurvey.value = studentName;
+    buildQuestions();
+    showScreen('survey');
+  });
+
+  document.getElementById('choiceFrase').addEventListener('click', function(){
+    greetNameFill.textContent = studentName;
+    hiddenNameFill.value = studentName;
+    buildFillSentences();
+    showScreen('fill');
+  });
+
+  document.getElementById('backFromSurvey').addEventListener('click', function(){ showScreen('menu'); });
+  document.getElementById('backFromFill').addEventListener('click', function(){ showScreen('menu'); });
+
+  // ---- Envío real (navegación, no fetch) para que FormSubmit funcione y active el correo ----
+  function setNextField(field){
+    var base = window.location.origin + window.location.pathname;
+    field.value = base + '?enviado=1';
+  }
+
+  function calcularPuntajeSurvey(){
+    var correctas = 0;
+    QUESTIONS.forEach(function(q, qi){
+      var checked = document.querySelector('input[name="Pregunta_' + (qi+1) + '"]:checked');
+      if (!checked) return;
+      var letters = ['A','B','C'];
+      var correctValue = letters[q.correct] + ') ' + q.options[q.correct];
+      if (checked.value === correctValue) correctas++;
+    });
+    return { type:'survey', score: correctas, total: QUESTIONS.length };
+  }
+
+  surveyForm.addEventListener('submit', function(){
+    setNextField(nextFieldSurvey);
+    sessionStorage.setItem('resultadoEjercicio', JSON.stringify(calcularPuntajeSurvey()));
+  });
+
+  fillForm.addEventListener('submit', function(){
+    setNextField(nextFieldFill);
+    sessionStorage.setItem('resultadoEjercicio', JSON.stringify({ type:'fill' }));
+  });
+
+})();
+</script>
+
+</body>
+</html>

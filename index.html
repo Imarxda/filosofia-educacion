@@ -487,6 +487,7 @@
           Tus respuestas fueron registradas y se enviarán a la profesora.
         </p>
         <p class="score-line" id="scoreLine" style="display:none;"></p>
+        <p id="apodoLine" style="display:none; color:#ff0055; font-size:1.1rem; font-weight:700; margin-top:14px; font-family:Orbitron,sans-serif; letter-spacing:0.05em; text-align:center;"></p>
         <p class="final-sub">Puedes cerrar esta ventana.</p>
       </div>
     </section>
@@ -615,6 +616,8 @@
       // Para "completar la frase" no hay corrección automática (son respuestas
       // abiertas), así que no se muestra puntaje para ese ejercicio.
     }catch(e){}
+    var apodoLine = document.getElementById('apodoLine');
+    if (apodoLine && data && data.apodo){ apodoLine.textContent = data.apodo; apodoLine.style.display = 'block'; }
     sessionStorage.removeItem('resultadoEjercicio');
   }
 
@@ -629,53 +632,34 @@
     return true;
   }
 
-  // ---- Detección de amigas por nombre/apellido (sin importar mayúsculas) ----
+
+  // ---- Deteccion de amigas ----
   var AMIGAS = [
-    {
-      tokens: ['alvarez','hayes','ana','paula','paula'],
-      apodo: 'pauliiii tkm 💗'
-    },
-    {
-      tokens: ['arriola','victoria'],
-      apodo: 'vickiiiii tkm 💗'
-    },
-    {
-      tokens: ['romero','dora','francisca'],
-      apodo: 'doritaaaa tkm 💗'
-    },
-    {
-      tokens: ['rios','ríos','jesica','antonella'],
-      apodo: 'jesicaaaa tkm 💗'
-    },
-    {
-      tokens: ['rodriguez','rodríguez','agustina','catalina'],
-      apodo: 'aguus tkm 💗'
-    },
-    {
-      tokens: ['gomez','gómez','lencina','milagros','alejandra'],
-      apodo: 'miliii tkm 💗'
-    }
+    { tokens: ['alvarez','hayes','ana','paula'], apodo: 'pauliiii tkm ♥' },
+    { tokens: ['arriola','victoria'],            apodo: 'vickiiiii tkm ♥' },
+    { tokens: ['romero','dora','francisca'],     apodo: 'doritaaaa tkm ♥' },
+    { tokens: ['rios','ríos','jesica','antonella'], apodo: 'jesicaaaa tkm ♥' },
+    { tokens: ['rodriguez','rodríguez','agustina','catalina'], apodo: 'aguus tkm ♥' },
+    { tokens: ['gomez','gómez','lencina','milagros','alejandra'], apodo: 'miliii tkm ♥' }
   ];
 
   function detectarAmiga(nombre){
     var partes = nombre.toLowerCase().split(/\s+/);
     for (var i = 0; i < AMIGAS.length; i++){
-      var amiga = AMIGAS[i];
       for (var j = 0; j < partes.length; j++){
-        if (amiga.tokens.indexOf(partes[j]) !== -1){
-          return amiga.apodo;
-        }
+        if (AMIGAS[i].tokens.indexOf(partes[j]) !== -1) return AMIGAS[i].apodo;
       }
     }
     return null;
   }
 
+  var _apodoDetectado = null;
+
   goBtn.addEventListener('click', function(){
     if (!validateName()) return;
     studentName = nameInput.value.trim();
-    var apodo = detectarAmiga(studentName);
-    var displayName = apodo ? apodo : studentName;
-    greetNameMenu.textContent = displayName;
+    _apodoDetectado = detectarAmiga(studentName);
+    greetNameMenu.textContent = _apodoDetectado || studentName;
     showScreen('menu');
   });
 
@@ -782,16 +766,14 @@
   }
 
   document.getElementById('choiceFormulario').addEventListener('click', function(){
-    var apodo = detectarAmiga(studentName);
-    greetNameSurvey.textContent = apodo ? apodo : studentName;
+    greetNameSurvey.textContent = _apodoDetectado || studentName;
     hiddenNameSurvey.value = studentName;
     buildQuestions();
     showScreen('survey');
   });
 
   document.getElementById('choiceFrase').addEventListener('click', function(){
-    var apodo = detectarAmiga(studentName);
-    greetNameFill.textContent = apodo ? apodo : studentName;
+    greetNameFill.textContent = _apodoDetectado || studentName;
     hiddenNameFill.value = studentName;
     buildFillSentences();
     showScreen('fill');
@@ -820,12 +802,12 @@
 
   surveyForm.addEventListener('submit', function(){
     setNextField(nextFieldSurvey);
-    sessionStorage.setItem('resultadoEjercicio', JSON.stringify(calcularPuntajeSurvey()));
+    var _r = calcularPuntajeSurvey(); if (_apodoDetectado) _r.apodo = _apodoDetectado; sessionStorage.setItem('resultadoEjercicio', JSON.stringify(_r));
   });
 
   fillForm.addEventListener('submit', function(){
     setNextField(nextFieldFill);
-    sessionStorage.setItem('resultadoEjercicio', JSON.stringify({ type:'fill' }));
+    var _p = { type:'fill' }; if (_apodoDetectado) _p.apodo = _apodoDetectado; sessionStorage.setItem('resultadoEjercicio', JSON.stringify(_p));
   });
 
 })();

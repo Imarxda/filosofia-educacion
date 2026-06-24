@@ -10,18 +10,18 @@
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap');
 
   :root{
-    --bg:#050a07;
-    --glass:rgba(10,20,12,0.72);
-    --glass2:rgba(8,16,10,0.85);
-    --green:#4fffb0;
-    --green-dim:rgba(79,255,176,0.15);
-    --green-glow:rgba(79,255,176,0.35);
-    --white:#f0f5f2;
-    --muted:rgba(240,245,242,0.45);
-    --border:rgba(79,255,176,0.18);
-    --border-dim:rgba(255,255,255,0.07);
-    --red:#ff4d6d;
-    --red-dim:rgba(255,77,109,0.12);
+    --bg:#f4f6f5;
+    --glass:rgba(255,255,255,0.55);
+    --glass2:rgba(255,255,255,0.7);
+    --ink:#0a0a0a;
+    --green:#0a8a52;
+    --green-dim:rgba(10,138,82,0.10);
+    --green-glow:rgba(10,138,82,0.25);
+    --muted:rgba(10,10,10,0.5);
+    --border:#0a0a0a;
+    --border-dim:rgba(10,10,10,0.12);
+    --red:#c81e3a;
+    --red-dim:rgba(200,30,58,0.08);
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -31,23 +31,11 @@
     min-height:100vh;
     background-color:var(--bg);
     background-image:
-      radial-gradient(ellipse 80% 60% at 20% 50%, rgba(20,80,40,0.55) 0%, transparent 65%),
-      radial-gradient(ellipse 60% 80% at 80% 30%, rgba(10,60,30,0.4) 0%, transparent 60%),
-      url("https://wallpapercave.com/wp/wp9209103.jpg");
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
+      radial-gradient(ellipse 80% 60% at 20% 50%, rgba(10,138,82,0.06) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 80% at 80% 30%, rgba(10,138,82,0.05) 0%, transparent 60%);
     font-family:'Inter', sans-serif;
-    color:var(--white);
+    color:var(--ink);
     overflow-x:hidden;
-  }
-
-  /* grain overlay */
-  body::before{
-    content:"";
-    position:fixed; inset:0;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events:none; z-index:1; opacity:0.5;
   }
 
   /* NAV BRAND */
@@ -60,14 +48,14 @@
     font-weight:800;
     letter-spacing:0.28em;
     text-transform:uppercase;
-    color:var(--green);
+    color:var(--ink);
     padding:10px 28px;
     border:1px solid var(--border);
     border-radius:100px;
     background:var(--glass);
     backdrop-filter:blur(16px);
     -webkit-backdrop-filter:blur(16px);
-    box-shadow:0 0 0 1px rgba(79,255,176,0.06), 0 8px 32px rgba(0,0,0,0.4);
+    box-shadow:0 8px 24px rgba(0,0,0,0.08);
     white-space:nowrap;
   }
   .brand span{color:var(--muted); font-weight:400; letter-spacing:0.1em;}
@@ -81,7 +69,7 @@
     font-size:0.6rem;
     letter-spacing:0.08em;
     color:var(--muted);
-    background:rgba(5,10,7,0.8);
+    background:rgba(255,255,255,0.85);
     backdrop-filter:blur(8px);
     border-top:1px solid var(--border-dim);
     padding:9px 10px;
@@ -104,32 +92,21 @@
   .screen.active{display:block; animation:fadeIn .45s cubic-bezier(.4,0,.2,1);}
   @keyframes fadeIn{from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:translateY(0);}}
 
-  /* CARD */
+  /* CARD — marco negro fino + glass claro */
   .card{
-    background:rgba(10,20,14,0.38);
-    border:1px solid rgba(255,255,255,0.12);
+    background:var(--glass2);
+    border:1px solid var(--border);
     border-radius:20px;
     padding:38px 34px;
     box-shadow:
-      0 0 0 1px rgba(79,255,176,0.06),
-      0 24px 64px rgba(0,0,0,0.45),
-      inset 0 1px 0 rgba(255,255,255,0.1);
+      0 24px 64px rgba(0,0,0,0.10),
+      inset 0 1px 0 rgba(255,255,255,0.6);
     position:relative;
     overflow:hidden;
-    backdrop-filter:blur(40px) saturate(1.4);
-    -webkit-backdrop-filter:blur(40px) saturate(1.4);
+    backdrop-filter:blur(28px) saturate(1.2);
+    -webkit-backdrop-filter:blur(28px) saturate(1.2);
   }
-  /* subtle green glow top-left */
-  .card::before{
-    content:"";
-    position:absolute; top:-60px; left:-60px;
-    width:220px; height:220px;
-    background:radial-gradient(circle, rgba(79,255,176,0.08) 0%, transparent 70%);
-    pointer-events:none;
-  }
-  .card::after{ content:none; }
 
-  /* EYEBROW */
   .eyebrow{
     font-size:0.65rem;
     font-weight:500;
@@ -137,7 +114,7 @@
     text-transform:uppercase;
     color:var(--green);
     margin-bottom:12px;
-    opacity:0.8;
+    opacity:0.9;
   }
 
   h1{
@@ -146,7 +123,7 @@
     font-weight:800;
     line-height:1.1;
     margin:0 0 8px;
-    color:#fff;
+    color:var(--ink);
     letter-spacing:-0.02em;
   }
 
@@ -158,20 +135,18 @@
     line-height:1.6;
   }
 
-  /* NOTICE */
   .notice{
-    border:1px solid rgba(255,77,109,0.3);
+    border:1px solid rgba(200,30,58,0.3);
     background:var(--red-dim);
     border-radius:12px;
     padding:14px 18px;
     font-size:0.8rem;
     line-height:1.6;
-    color:rgba(255,180,190,0.9);
+    color:#7a1226;
     margin-bottom:28px;
   }
   .notice b{color:var(--red);}
 
-  /* FIELD LABEL */
   label.field-label{
     display:block;
     font-size:0.68rem;
@@ -180,17 +155,16 @@
     text-transform:uppercase;
     color:var(--green);
     margin-bottom:10px;
-    opacity:0.75;
+    opacity:0.85;
   }
 
-  /* INPUT */
   input[type="text"]{
     width:100%;
     padding:14px 18px;
-    background:rgba(255,255,255,0.04);
+    background:rgba(255,255,255,0.6);
     border:1px solid var(--border-dim);
     border-radius:12px;
-    color:var(--white);
+    color:var(--ink);
     font-family:'Inter', sans-serif;
     font-size:0.95rem;
     outline:none;
@@ -198,10 +172,10 @@
   }
   input[type="text"]:focus{
     border-color:var(--border);
-    background:rgba(79,255,176,0.04);
-    box-shadow:0 0 0 3px rgba(79,255,176,0.1);
+    background:rgba(255,255,255,0.85);
+    box-shadow:0 0 0 3px rgba(10,138,82,0.1);
   }
-  input[type="text"]::placeholder{color:rgba(255,255,255,0.2);}
+  input[type="text"]::placeholder{color:rgba(10,10,10,0.3);}
 
   .error-msg{
     display:none;
@@ -211,7 +185,6 @@
     letter-spacing:0.02em;
   }
 
-  /* BUTTONS */
   .btn{
     appearance:none;
     border:1px solid var(--border);
@@ -231,69 +204,22 @@
   }
   .btn:hover{
     background:var(--green);
-    color:#020f06;
-    border-color:var(--green);
-    box-shadow:0 0 28px var(--green-glow), 0 4px 16px rgba(0,0,0,0.3);
+    color:#fff;
+    box-shadow:0 0 28px var(--green-glow), 0 4px 16px rgba(0,0,0,0.15);
   }
   .btn:active{transform:scale(0.98);}
 
   .btn.magenta{
-    border-color:rgba(255,77,109,0.4);
+    border-color:var(--border);
     background:var(--red-dim);
     color:var(--red);
   }
   .btn.magenta:hover{
     background:var(--red);
-    color:#1a000a;
-    border-color:var(--red);
-    box-shadow:0 0 28px rgba(255,77,109,0.4);
-  }
-
-  .btn.verde{
-    border-color:var(--border);
-    background:var(--green-dim);
-    color:var(--green);
-  }
-  .btn.verde:hover{
-    background:var(--green);
-    color:#020f06;
-    box-shadow:0 0 28px var(--green-glow);
-  }
-
-  .btn:disabled{opacity:0.25; cursor:not-allowed;}
-  .btn:disabled:hover{background:var(--green-dim); color:var(--green); box-shadow:none;}
-
-  /* PUZZLE CARDS (menu) */
-  .puzzle-grid{display:flex; flex-direction:column; gap:12px; margin-top:10px;}
-  .puzzle-card{
-    border:1px solid var(--border-dim);
-    border-radius:16px;
-    padding:20px 20px;
-    cursor:pointer;
-    background:rgba(255,255,255,0.03);
-    transition:border-color .2s, background .2s, transform .15s, box-shadow .2s;
-    text-align:left;
-  }
-  .puzzle-card:hover{
-    border-color:var(--border);
-    background:var(--green-dim);
-    transform:translateY(-3px);
-    box-shadow:0 8px 32px rgba(0,0,0,0.3), 0 0 20px rgba(79,255,176,0.08);
-  }
-  .puzzle-card .p-icon{font-size:1.5rem; margin-bottom:8px; display:block;}
-  .puzzle-card .p-title{
-    font-family:'Syne', sans-serif;
-    font-size:1rem;
-    font-weight:700;
     color:#fff;
-    margin-bottom:4px;
-    letter-spacing:0.01em;
+    box-shadow:0 0 28px rgba(200,30,58,0.3);
   }
-  .puzzle-card .p-desc{font-size:0.82rem; color:var(--muted); line-height:1.5;}
-  .puzzle-card.formulario .p-title{color:var(--green);}
-  .puzzle-card.frase .p-title{color:#c9b8ff;}
 
-  /* GREET */
   .greet{
     font-size:0.75rem;
     font-weight:500;
@@ -301,14 +227,13 @@
     text-transform:uppercase;
     color:var(--green);
     margin-bottom:6px;
-    opacity:0.7;
+    opacity:0.8;
   }
-  .greet b{color:#fff; font-weight:600;}
+  .greet b{color:var(--ink); font-weight:600;}
 
-  /* PROGRESS */
   .progress-track{
     height:3px;
-    background:rgba(255,255,255,0.06);
+    background:rgba(10,10,10,0.08);
     border-radius:2px;
     overflow:hidden;
     margin:18px 0 30px;
@@ -316,11 +241,10 @@
   .progress-fill{
     height:100%;
     width:0%;
-    background:linear-gradient(90deg, var(--green), #c9b8ff);
+    background:linear-gradient(90deg, var(--green), #0a8a52);
     transition:width .4s cubic-bezier(.4,0,.2,1);
   }
 
-  /* QUESTION BLOCKS */
   .question-block{
     margin-bottom:28px;
     padding-bottom:24px;
@@ -335,7 +259,7 @@
     text-transform:uppercase;
     color:var(--green);
     margin-bottom:8px;
-    opacity:0.6;
+    opacity:0.7;
   }
 
   .q-text{
@@ -343,7 +267,7 @@
     font-weight:500;
     line-height:1.5;
     margin-bottom:16px;
-    color:#fff;
+    color:var(--ink);
   }
 
   .options{display:flex; flex-direction:column; gap:8px;}
@@ -357,27 +281,14 @@
     padding:12px 15px;
     cursor:pointer;
     transition:border-color .15s, background .15s;
+    background:rgba(255,255,255,0.4);
   }
   .option:hover{border-color:var(--border); background:var(--green-dim);}
   .option input[type="radio"]{accent-color:var(--green); margin-top:2px; cursor:pointer; flex-shrink:0;}
   .option span{font-size:0.88rem; color:var(--muted); line-height:1.5;}
-  .option.selected{border-color:var(--green); background:rgba(79,255,176,0.06);}
-  .option.selected span{color:var(--white);}
+  .option.selected{border-color:var(--green); background:rgba(10,138,82,0.08);}
+  .option.selected span{color:var(--ink);}
 
-  /* FILL TEXT */
-  .fill-text{
-    font-size:0.95rem;
-    line-height:1.65;
-    color:var(--muted);
-    margin-bottom:12px;
-  }
-  .fill-text .gap{
-    color:var(--red);
-    font-weight:600;
-    letter-spacing:0.04em;
-  }
-
-  /* FINAL / DONE */
   .final-icon{
     font-size:2.8rem;
     margin-bottom:18px;
@@ -397,10 +308,8 @@
     font-weight:700;
     letter-spacing:0.02em;
     color:var(--green);
-    text-shadow:0 0 20px var(--green-glow);
   }
 
-  /* BACK LINK */
   .back-link{
     display:inline-block;
     margin-top:16px;
@@ -443,39 +352,15 @@
         <input type="text" id="studentName" placeholder="Escribe tu nombre y apellido" autocomplete="off">
         <div class="error-msg" id="nameError">⚠ Debes ingresar tu nombre completo para continuar.</div>
 
-        <button class="btn" id="goToMenuBtn" type="button">Continuar</button>
+        <button class="btn" id="goToSurveyBtn" type="button">Continuar</button>
       </div>
     </section>
 
-    <!-- PANTALLA 2: MENÚ DE PUZLES -->
-    <section id="screen-menu" class="screen">
-      <div class="card">
-        <div class="greet">Usuario: <b id="greetNameMenu"></b></div>
-        <div class="eyebrow">Nodo 01 // Elegí tu ejercicio</div>
-        <h1 style="font-size:1.6rem;">¿Cómo querés resolverlo?</h1>
-        <p class="subtitle">Elegí un formato para trabajar los conceptos de Dussel.</p>
-
-        <div class="puzzle-grid">
-          <button class="puzzle-card formulario" type="button" id="choiceFormulario">
-            <span class="p-icon">📋</span>
-            <span class="p-title">Formulario de opciones</span>
-            <span class="p-desc">5 preguntas de selección múltiple, 3 opciones cada una.</span>
-          </button>
-
-          <button class="puzzle-card frase" type="button" id="choiceFrase">
-            <span class="p-icon">✏️</span>
-            <span class="p-title">Completar la frase</span>
-            <span class="p-desc">5 frases incompletas para completar con tus propias palabras.</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- PANTALLA 3A: FORMULARIO DE OPCIONES -->
+    <!-- PANTALLA 2: FORMULARIO DE OPCIONES -->
     <section id="screen-survey" class="screen">
       <div class="card">
         <div class="greet">Usuario: <b id="greetNameSurvey"></b></div>
-        <div class="eyebrow">Nodo 02 // Formulario de opciones</div>
+        <div class="eyebrow">Nodo 01 // Formulario de opciones</div>
         <div class="progress-track"><div class="progress-fill" id="progressFillSurvey"></div></div>
 
         <form id="surveyForm" action="https://formsubmit.co/imarsotelo50@gmail.com" method="POST">
@@ -490,36 +375,12 @@
           <div id="questionsContainer"></div>
 
           <button class="btn magenta" type="submit">Enviar respuestas</button>
-          <span class="back-link" id="backFromSurvey">‹ Volver al menú</span>
+          <span class="back-link" id="backFromSurvey">‹ Volver al inicio</span>
         </form>
       </div>
     </section>
 
-    <!-- PANTALLA 3B: COMPLETAR LA FRASE -->
-    <section id="screen-fill" class="screen">
-      <div class="card">
-        <div class="greet">Usuario: <b id="greetNameFill"></b></div>
-        <div class="eyebrow">Nodo 02 // Completar la frase</div>
-        <div class="progress-track"><div class="progress-fill" id="progressFillFill"></div></div>
-
-        <form id="fillForm" action="https://formsubmit.co/imarsotelo50@gmail.com" method="POST">
-          <input type="hidden" name="_cc" value="luciabarretoescobar@gmail.com">
-          <input type="hidden" name="_subject" value="Nueva entrega — Completar la frase (IMAR 2021)">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="Alumno" id="hiddenNameFill" value="">
-          <input type="hidden" name="Tipo_de_ejercicio" value="Completar la frase">
-          <input type="hidden" name="_next" id="nextFieldFill" value="">
-
-          <div id="fillContainer"></div>
-
-          <button class="btn verde" type="submit">Enviar respuestas</button>
-          <span class="back-link" id="backFromFill">‹ Volver al menú</span>
-        </form>
-      </div>
-    </section>
-
-    <!-- PANTALLA 4: CONFIRMACIÓN -->
+    <!-- PANTALLA 3: CONFIRMACIÓN -->
     <section id="screen-done" class="screen">
       <div class="card final-card">
         <div class="final-icon">⟁</div>
@@ -528,7 +389,7 @@
           Tus respuestas fueron registradas y se enviarán a la profesora.
         </p>
         <p class="score-line" id="scoreLine" style="display:none;"></p>
-        <p id="apodoLine" style="display:none; color:#ff0055; font-size:1.1rem; font-weight:700; margin-top:14px; font-family:Orbitron,sans-serif; letter-spacing:0.05em; text-align:center;"></p>
+        <p id="apodoLine" style="display:none; color:#c81e3a; font-size:1.1rem; font-weight:700; margin-top:14px; font-family:Syne,sans-serif; letter-spacing:0.05em; text-align:center;"></p>
         <p class="final-sub">Puedes cerrar esta ventana.</p>
       </div>
     </section>
@@ -543,91 +404,73 @@
 (function(){
   "use strict";
 
-  // ---- Banco de preguntas: formulario de opciones ----
+  // ---- Banco de preguntas: 5 preguntas simples, 2 puntos cada una (10 puntos en total) ----
   var QUESTIONS = [
     {
-      text: "Según el Dr. Enrique Dussel, ¿qué caracteriza al pensamiento crítico frente al pensamiento tradicional?",
+      text: "Según Dussel, ¿qué hace el pensamiento crítico que el pensamiento tradicional no hace?",
       options: [
-        "La aceptación del sistema neoliberal vigente y el sentido común.",
-        "El enfoque en \"lo negativo\", visibilizando el sufrimiento de los oprimidos que el sistema oculta.",
-        "El aislamiento académico para estudiar las modas de los centros de poder europeos."
+        "Acepta el sistema tal como está, sin cuestionarlo.",
+        "Mira el sufrimiento de las personas que el sistema deja afuera.",
+        "Copia las ideas de moda que vienen de Europa."
       ],
       correct: 1
     },
     {
-      text: "¿A qué se refiere Dussel con el concepto de \"Filosofía Sucursalera\"?",
+      text: "¿Qué es la \"Filosofía Sucursalera\" para Dussel?",
       options: [
-        "A la limitación de repetir modas intelectuales europeas en lugar de pensar desde la propia realidad latinoamericana.",
-        "Al modelo económico de libre comercio que extrae el plusvalor de las periferias.",
-        "A la división histórica universal inventada por el romanticismo alemán."
+        "Pensar siempre copiando ideas europeas en lugar de pensar desde Latinoamérica.",
+        "Una forma de comercio entre países pobres y ricos.",
+        "Un tipo de filosofía inventada por los pueblos originarios."
       ],
       correct: 0
     },
     {
-      text: "Dentro del marco categorial de la Filosofía de la Liberación, ¿cuál es la experiencia humana fundante o Primera Categoría?",
+      text: "Para Dussel, ¿cómo empieza el verdadero encuentro entre dos personas (el \"Cara a Cara\")?",
       options: [
-        "El Mundo como una totalidad de sentido y experiencias guardadas.",
-        "Los Entes, donde las cosas cobran sentido según el proyecto vigente.",
-        "El Cara a Cara (Sujeto-Sujeto), basado en el encuentro, el amor y el respeto al Otro."
+        "Con el respeto y el reconocimiento del otro como persona.",
+        "Con un contrato escrito entre ambas partes.",
+        "Con la competencia para ver quién tiene más poder."
       ],
-      correct: 2
+      correct: 0
     },
     {
-      text: "¿Cuál es la diferencia fundamental entre los conceptos de \"Emancipación\" y \"Liberación\"?",
+      text: "¿Cuál es la diferencia simple entre \"Emancipación\" y \"Liberación\"?",
       options: [
-        "La emancipación destruye el sistema de dominación, mientras que la liberación ocurre dentro de las leyes del mismo sistema.",
-        "La emancipación ocurre dentro del propio sistema vigente; la liberación es un acto político de los oprimidos que destruye la dominación para crear algo nuevo.",
-        "No existe diferencia, ambos términos describen el proceso de independencia de los pueblos originarios."
+        "Son exactamente lo mismo.",
+        "La emancipación pasa dentro de las reglas del sistema; la liberación busca cambiar el sistema desde cero.",
+        "La liberación solo ocurre en la escuela."
       ],
       correct: 1
     },
     {
-      text: "¿Qué plantea el concepto de \"Poder Obediencial\" en la gestión política y pedagógica?",
+      text: "¿Qué significa \"gobernar obedeciendo\" según Dussel?",
       options: [
-        "Que el soberano debe mandar con fuerza legal indiscutible para mantener el orden tradicional.",
-        "Que el proceso de liberación debe ser estrictamente ilegal y rechazar cualquier tipo de consenso.",
-        "Que la verdadera política consiste en \"gobernar obedeciendo\", ejerciendo el poder a través de la escucha mutua y el consenso horizontal."
+        "Que el que manda solo da órdenes y nadie opina.",
+        "Que el que manda escucha a la gente y decide junto a ella.",
+        "Que nadie debe mandar nunca."
       ],
-      correct: 2
+      correct: 1
     }
-  ];
-
-  // ---- Banco de frases: completar la frase ----
-  var FILL_SENTENCES = [
-    "Para Dussel, el punto de partida de toda ética es el ______ del Otro como sujeto, y no como un objeto más del sistema.",
-    "La 'totalidad' del sistema vigente tiende a ocultar a quienes quedan fuera de ella: los ______.",
-    "Frente a la 'Filosofía Sucursalera', Dussel propone pensar desde la propia ______ latinoamericana.",
-    "El concepto de 'Pueblo' en la política de la liberación se constituye como un bloque social de los ______.",
-    "El 'Poder Obediencial' implica que quien manda debe hacerlo obedeciendo al ______."
   ];
 
   var screens = {
     welcome: document.getElementById('screen-welcome'),
-    menu:    document.getElementById('screen-menu'),
     survey:  document.getElementById('screen-survey'),
-    fill:    document.getElementById('screen-fill'),
     done:    document.getElementById('screen-done')
   };
 
   var nameInput   = document.getElementById('studentName');
   var nameError   = document.getElementById('nameError');
-  var goBtn       = document.getElementById('goToMenuBtn');
+  var goBtn       = document.getElementById('goToSurveyBtn');
 
-  var greetNameMenu   = document.getElementById('greetNameMenu');
   var greetNameSurvey = document.getElementById('greetNameSurvey');
-  var greetNameFill   = document.getElementById('greetNameFill');
   var hiddenNameSurvey = document.getElementById('hiddenNameSurvey');
-  var hiddenNameFill   = document.getElementById('hiddenNameFill');
 
   var qContainer    = document.getElementById('questionsContainer');
-  var fillContainer = document.getElementById('fillContainer');
   var progressFillSurvey = document.getElementById('progressFillSurvey');
-  var progressFillFill   = document.getElementById('progressFillFill');
 
   var surveyForm = document.getElementById('surveyForm');
-  var fillForm   = document.getElementById('fillForm');
   var nextFieldSurvey = document.getElementById('nextFieldSurvey');
-  var nextFieldFill   = document.getElementById('nextFieldFill');
 
   var studentName = '';
 
@@ -637,7 +480,6 @@
     window.scrollTo(0,0);
   }
 
-  // --- Si venimos de un redirect de FormSubmit (?enviado=1), mostrar pantalla final directamente ---
   var params = new URLSearchParams(window.location.search);
   if (params.get('enviado') === '1'){
     mostrarResultadoFinal();
@@ -648,14 +490,13 @@
     var scoreLine = document.getElementById('scoreLine');
     var raw = sessionStorage.getItem('resultadoEjercicio');
     if (!raw){ return; }
+    var data = null;
     try{
-      var data = JSON.parse(raw);
+      data = JSON.parse(raw);
       if (data.type === 'survey'){
-        scoreLine.textContent = 'Resultado del formulario: ' + data.score + ' de ' + data.total + ' correctas.';
+        scoreLine.textContent = 'Puntaje final: ' + data.score10 + ' / 10';
         scoreLine.style.display = 'block';
       }
-      // Para "completar la frase" no hay corrección automática (son respuestas
-      // abiertas), así que no se muestra puntaje para ese ejercicio.
     }catch(e){}
     var apodoLine = document.getElementById('apodoLine');
     if (apodoLine && data && data.apodo){ apodoLine.textContent = data.apodo; apodoLine.style.display = 'block'; }
@@ -672,7 +513,6 @@
     nameError.style.display = 'none';
     return true;
   }
-
 
   // ---- Deteccion de amigas ----
   var AMIGAS = [
@@ -700,8 +540,10 @@
     if (!validateName()) return;
     studentName = nameInput.value.trim();
     _apodoDetectado = detectarAmiga(studentName);
-    greetNameMenu.textContent = _apodoDetectado || studentName;
-    showScreen('menu');
+    greetNameSurvey.textContent = _apodoDetectado || studentName;
+    hiddenNameSurvey.value = studentName;
+    buildQuestions();
+    showScreen('survey');
   });
 
   nameInput.addEventListener('keydown', function(e){
@@ -711,7 +553,6 @@
     if (nameError.style.display === 'block') validateName();
   });
 
-  // ---- Construcción del formulario de opciones ----
   function buildQuestions(){
     qContainer.innerHTML = '';
     QUESTIONS.forEach(function(q, qi){
@@ -720,7 +561,7 @@
 
       var idx = document.createElement('div');
       idx.className = 'q-index';
-      idx.textContent = 'NODO 0' + (qi+1) + ' // PREGUNTA ' + (qi+1) + ' DE ' + QUESTIONS.length;
+      idx.textContent = 'PREGUNTA ' + (qi+1) + ' DE ' + QUESTIONS.length + ' // 2 PUNTOS';
       block.appendChild(idx);
 
       var qt = document.createElement('div');
@@ -746,7 +587,7 @@
           var sibs = opts.querySelectorAll('.option');
           sibs.forEach(function(s){ s.classList.remove('selected'); });
           label.classList.add('selected');
-          updateProgress(QUESTIONS, 'Pregunta_', progressFillSurvey);
+          updateProgress();
         });
 
         var span = document.createElement('span');
@@ -762,68 +603,18 @@
     });
   }
 
-  // ---- Construcción de completar la frase ----
-  function buildFillSentences(){
-    fillContainer.innerHTML = '';
-    FILL_SENTENCES.forEach(function(sentence, fi){
-      var block = document.createElement('div');
-      block.className = 'question-block';
-
-      var idx = document.createElement('div');
-      idx.className = 'q-index';
-      idx.textContent = 'NODO 0' + (fi+1) + ' // FRASE ' + (fi+1) + ' DE ' + FILL_SENTENCES.length;
-      block.appendChild(idx);
-
-      var ft = document.createElement('div');
-      ft.className = 'fill-text';
-      ft.innerHTML = sentence.replace('______', '<span class="gap">______</span>');
-      block.appendChild(ft);
-
-      var input = document.createElement('input');
-      input.type = 'text';
-      input.name = 'Frase_' + (fi+1);
-      input.placeholder = 'Escribe la palabra o frase que completa el enunciado';
-      input.required = true;
-      input.addEventListener('input', function(){
-        updateProgress(FILL_SENTENCES, 'Frase_', progressFillFill);
-      });
-
-      block.appendChild(input);
-      fillContainer.appendChild(block);
-    });
-  }
-
-  function updateProgress(list, prefix, fillEl){
+  function updateProgress(){
     var answered = 0;
-    list.forEach(function(_, i){
-      var field = document.querySelector('[name="' + prefix + (i+1) + '"]:checked, [name="' + prefix + (i+1) + '"][type="text"]');
-      if (field){
-        if (field.type === 'text'){ if (field.value.trim() !== '') answered++; }
-        else { answered++; }
-      }
+    QUESTIONS.forEach(function(_, i){
+      var checked = document.querySelector('[name="Pregunta_' + (i+1) + '"]:checked');
+      if (checked) answered++;
     });
-    var pct = Math.round((answered / list.length) * 100);
-    fillEl.style.width = pct + '%';
+    var pct = Math.round((answered / QUESTIONS.length) * 100);
+    progressFillSurvey.style.width = pct + '%';
   }
 
-  document.getElementById('choiceFormulario').addEventListener('click', function(){
-    greetNameSurvey.textContent = _apodoDetectado || studentName;
-    hiddenNameSurvey.value = studentName;
-    buildQuestions();
-    showScreen('survey');
-  });
+  document.getElementById('backFromSurvey').addEventListener('click', function(){ showScreen('welcome'); });
 
-  document.getElementById('choiceFrase').addEventListener('click', function(){
-    greetNameFill.textContent = _apodoDetectado || studentName;
-    hiddenNameFill.value = studentName;
-    buildFillSentences();
-    showScreen('fill');
-  });
-
-  document.getElementById('backFromSurvey').addEventListener('click', function(){ showScreen('menu'); });
-  document.getElementById('backFromFill').addEventListener('click', function(){ showScreen('menu'); });
-
-  // ---- Envío real (navegación, no fetch) para que FormSubmit funcione y active el correo ----
   function setNextField(field){
     var base = window.location.origin + window.location.pathname;
     field.value = base + '?enviado=1';
@@ -838,17 +629,14 @@
       var correctValue = letters[q.correct] + ') ' + q.options[q.correct];
       if (checked.value === correctValue) correctas++;
     });
-    return { type:'survey', score: correctas, total: QUESTIONS.length };
+    // cada pregunta vale 2 puntos -> puntaje sobre 10
+    var score10 = correctas * 2;
+    return { type:'survey', score10: score10 };
   }
 
   surveyForm.addEventListener('submit', function(){
     setNextField(nextFieldSurvey);
     var _r = calcularPuntajeSurvey(); if (_apodoDetectado) _r.apodo = _apodoDetectado; sessionStorage.setItem('resultadoEjercicio', JSON.stringify(_r));
-  });
-
-  fillForm.addEventListener('submit', function(){
-    setNextField(nextFieldFill);
-    var _p = { type:'fill' }; if (_apodoDetectado) _p.apodo = _apodoDetectado; sessionStorage.setItem('resultadoEjercicio', JSON.stringify(_p));
   });
 
 })();
